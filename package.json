@@ -1,0 +1,19 @@
+{
+  "name": "js-recipes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "mini-css-extract-plugin": "^2.8.1",
+    "node-sass": "^9.0.0",
+    "sass-loader": "^14.1.1",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
+}
