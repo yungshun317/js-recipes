@@ -3,8 +3,8 @@ const path = require("path");
 const config = {
     mode: "development",
     entry: [
-        __dirname + "./src/js/controller.js",
-        __dirname + "./src/sass/main.scss"
+        __dirname + "/src/js/controller.js",
+        __dirname + "/src/sass/main.scss"
     ],
     output: {
         path: path.resolve(__dirname, 'src'),
@@ -22,7 +22,7 @@ const config = {
                 use: [
                     {
                         loader: "file-loader",
-                        options: { outputPath: "src/", name: "style.css" }
+                        options: { outputPath: ".", name: "style.css" }
                     },
                     "sass-loader"
                 ]
