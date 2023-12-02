@@ -1,3 +1,6 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 const recipeContainer = document.querySelector(".recipe");
 
 const timeout = function (s) {
@@ -138,11 +141,7 @@ const showRecipe = async function () {
                 <span class="recipe__publisher">${recipe.publisher}</span>. Please check out
                 directions at their website.
               </p>
-              <a
-                class="btn--small recipe__btn"
-                href="${recipe.sourceUrl}"
-                target="_blank"
-              >
+              <a class="btn--small recipe__btn" href="${recipe.sourceUrl}" target="_blank">
                 <span>Directions</span>
                 <svg class="search__icon">
                   <use href="src/img/icons.svg#icon-arrow-right"></use>

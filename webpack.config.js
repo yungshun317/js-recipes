@@ -15,7 +15,12 @@ const config = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
-                use: []
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env"]
+                    }
+                }
             }, {
                 test: /\.(s(a|c)ss)$/,
                 // use: ['style-loader','css-loader', 'sass-loader']
