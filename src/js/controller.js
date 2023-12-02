@@ -12,7 +12,7 @@ const renderSpinner = function(parentEl) {
     const markup = `
     <div class="spinner">
         <svg>
-            <use href="src/img/spinner-solid.svg#icon-loader"></use>
+            <use xlink:href="src/img/icons.svg#icon-loader"></use>
         </svg>
     </div>
     `
