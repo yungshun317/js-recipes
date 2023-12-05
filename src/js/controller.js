@@ -14,26 +14,13 @@ const timeout = function (s) {
     });
 };
 
-const renderSpinner = function(parentEl) {
-    const markup = `
-    <div class="spinner">
-        <svg>
-            <use xlink:href="src/img/icons.svg#icon-loader"></use>
-        </svg>
-    </div>
-    `
-    parentEl.innerHTML = "";
-    parentEl.insertAdjacentHTML('afterbegin', markup);
-    console.log("Spinner rendered.")
-}
-
 const controlRecipe = async function () {
     try {
         const id = window.location.hash.slice(1);
         console.log(id);
 
         if (!id) return;
-        renderSpinner(recipeContainer);
+        recipeView.renderSpinner();
 
         // [1] Load Recipe
         await model.loadRecipe(id);
