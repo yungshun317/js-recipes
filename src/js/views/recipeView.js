@@ -28,6 +28,15 @@ class RecipeView {
         console.log("Spinner rendered.")
     }
 
+    addHandlerRender(handler) {
+        // controlRecipes();
+        /*
+        window.addEventListener('hashChange', controlRecipes);
+        window.addEventListener('load', controlRecipes);
+        */
+        ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+    }
+
     #generateMarkup(data) {
         return `
             <figure class="recipe__fig">
