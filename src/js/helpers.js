@@ -18,6 +18,7 @@ export const getJSON = async function (url) {
 
         console.log(res, data);
         /*
+        // Recipe
         Response {type: 'cors', url: 'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886', redirected: false, status: 200, ok: true, ...}
         {status: 'success', data: {...}}
             data:
@@ -33,6 +34,13 @@ export const getJSON = async function (url) {
                     [[Prototype]]: Object
                 [[Prototype]]: Object
                 status: "success"
+            [[Prototype]]: Object
+        // Search
+        Response {type: 'cors', url: 'https://forkify-api.herokuapp.com/api/v2/recipes/?search=pizza', redirected: false, status: 200, ok: true, ...}
+        {status: 'success', results: 59, data: {…}}
+            data: {recipes: Array(59)}
+            results: 59
+            status: "success"
             [[Prototype]]: Object
         */
 
