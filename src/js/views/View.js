@@ -33,8 +33,8 @@ export default class View {
             // <span class="recipe__info-data recipe__info-data--people">5</span> false
 
             // Update changed text
-            if (!newEl.isEqualNode(curEl) && newEl.firstChild.nodeValue.trim() !== '') {
-                console.log(newEl.firstChild.nodeValue.trim());
+            if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') {
+                // console.log(newEl.firstChild.nodeValue.trim());
                 // 5
                 curEl.textContent = newEl.textContent;
             }
