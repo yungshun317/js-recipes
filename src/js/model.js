@@ -28,6 +28,10 @@ export const loadRecipe = async function (id) {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         }
+
+        if (state.bookmarks.some(bookmark => bookmark.id === id)) state.recipe.bookmarked = true;
+        else state.recipe.bookmarked = false;
+
         console.log(state.recipe);
         // {id: '5ed6604591c37cdc054bc886', title: 'Spicy Chicken and Pepper Jack Pizza', publisher: 'My Baking Addiction', sourceUrl: 'http://www.mybakingaddiction.com/spicy-chicken-and-pepper-jack-pizza-recipe/', image: 'http://forkify-api.herokuapp.com/images/FlatBread21of1a180.jpg', ...}
     } catch (err) {
