@@ -1,4 +1,5 @@
 import View from './View.js';
+import previewView from './previewView.js';
 
 class ResultsView extends View {
     _parentElement = document.querySelector('.results');
@@ -7,9 +8,12 @@ class ResultsView extends View {
 
     _generateMarkup() {
         console.log(this._data);
-        return this._data.map(this.#generateMarkupPreview).join('');
+        return this._data
+            .map(result => previewView.render(result, false))
+            .join('');
     }
 
+    /*
     #generateMarkupPreview(result) {
         const id = window.location.hash.slice(1);
 
@@ -27,7 +31,7 @@ class ResultsView extends View {
             </li>
         `;
     }
-
+    */
 }
 
 export default new ResultsView();
