@@ -132,6 +132,9 @@ const controlAddRecipe = function (newRecipe) {
         title: "TEST"
         [[Prototype]]: Object
     */
+
+    // Upload the new recipe data
+    model.uploadRecipe(newRecipe);
 }
 
 const init = function() {

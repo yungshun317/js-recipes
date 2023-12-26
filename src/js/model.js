@@ -120,3 +120,30 @@ const clearBookmarks = function () {
 }
 
 // clearBookmarks();
+
+export const uploadRecipe = async function (newRecipe) {
+    const ingredients = Object.entries(newRecipe)
+        .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
+        // console.log(ingredients);
+        /*
+        (3) [Array(2), Array(2), Array(2)]
+            0: (2) ['ingredient-1', '0.5,kg,Rice']
+            1: (2) ['ingredient-2', '1,,Avocado']
+            2: (2) ['ingredient-3', ',,salt']
+            length: 3
+            [[Prototype]]: Array(0)
+        */
+        .map(ing => {
+            const [quantity, unit, description] = ing[1].replaceAll(' ', '').split(',');
+            return { quantity, unit, description };
+    });
+    console.log(ingredients);
+    /*
+    (3) [{...}, {...}, {...}]
+        0: {quantity: '0.5', unit: 'kg', description: 'Rice'}
+        1: {quantity: '1', unit: '', description: 'Avocado'}
+        2: {quantity: '', unit: '', description: 'salt'}
+        length: 3
+        [[Prototype]]: Array(0)
+    */
+}
