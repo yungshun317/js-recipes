@@ -140,7 +140,8 @@ export const uploadRecipe = async function (newRecipe) {
                 const [quantity, unit, description] = ingArr;
                 return { quantity: quantity ? +quantity : null, unit, description };
             });
-        console.log(ingredients);
+
+        // console.log(ingredients);
         /*
         (3) [{...}, {...}, {...}]
             0: {quantity: 0.5, unit: 'kg', description: 'Rice'}
@@ -148,6 +149,29 @@ export const uploadRecipe = async function (newRecipe) {
             2: {quantity: null, unit: '', description: 'salt'}
             length: 3
             [[Prototype]]: Array(0)
+        */
+
+        const recipe = {
+            title: newRecipe.title,
+            source_url: newRecipe.sourceUrl,
+            image_url: newRecipe.image,
+            publisher: newRecipe.publisher,
+            cooking_time: +newRecipe.cookingTime,
+            servings: +newRecipe.servings,
+            ingredients
+        }
+
+        // console.log(recipe);
+        /*
+        {title: 'TEST', source_url: 'TEST', image_url: 'TEST', publisher: 'TEST', cooking_time: 23, ...}
+            cooking_time: 23
+            image_url: "TEST"
+            ingredients: (3) [{...}, {...}, {...}]
+            publisher: "TEST"
+            servings: 23
+            source_url: "TEST"
+            title: "TEST"
+            [[Prototype]]: Object
         */
     } catch (err) {
         throw err;
