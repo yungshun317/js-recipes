@@ -97,45 +97,50 @@ const controlBookmarks = function () {
     bookmarksView.render(model.state.bookmarks);
 }
 
-const controlAddRecipe = function (newRecipe) {
-    console.log(newRecipe);
-    /*
-    // Before `Object.fromEntries()`
-    (12) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
-        0: (2) ['title', 'TEST']
-        1: (2) ['sourceUrl', 'TEST']
-        2: (2) ['image', 'TEST']
-        3: (2) ['publisher', 'TEST']
-        4: (2) ['cookingTime', '23']
-        5: (2) ['servings', '23']
-        6: (2) ['ingredient-1', '0.5,kg,Rice']
-        7: (2) ['ingredient-2', '1,,Avocado']
-        8: (2) ['ingredient-3', ',,salt']
-        9: (2) ['ingredient-4', '']
-        10: (2) ['ingredient-5', '']
-        11: (2) ['ingredient-6', '']
-        length: 12
-        [[Prototype]]: Array(0)
-    // After `Object.fromEntries()`
-    {title: 'TEST', sourceUrl: 'TEST', image: 'TEST', publisher: 'TEST', cookingTime: '23', ...}
-        cookingTime: "23"
-        image: "TEST"
-        ingredient-1: "0.5,kg,Rice"
-        ingredient-2: "1,,Avocado"
-        ingredient-3: ",,salt"
-        ingredient-4: ""
-        ingredient-5: ""
-        ingredient-6: ""
-        publisher: "TEST"
-        servings: "23"
-        sourceUrl: "TEST"
-        title: "TEST"
-        [[Prototype]]: Object
-    */
+const controlAddRecipe = async function (newRecipe) {
+    try {
+        console.log(newRecipe);
+        /*
+        // Before `Object.fromEntries()`
+        (12) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
+            0: (2) ['title', 'TEST']
+            1: (2) ['sourceUrl', 'TEST']
+            2: (2) ['image', 'TEST']
+            3: (2) ['publisher', 'TEST']
+            4: (2) ['cookingTime', '23']
+            5: (2) ['servings', '23']
+            6: (2) ['ingredient-1', '0.5,kg,Rice']
+            7: (2) ['ingredient-2', '1,,Avocado']
+            8: (2) ['ingredient-3', ',,salt']
+            9: (2) ['ingredient-4', '']
+            10: (2) ['ingredient-5', '']
+            11: (2) ['ingredient-6', '']
+            length: 12
+            [[Prototype]]: Array(0)
+        // After `Object.fromEntries()`
+        {title: 'TEST', sourceUrl: 'TEST', image: 'TEST', publisher: 'TEST', cookingTime: '23', ...}
+            cookingTime: "23"
+            image: "TEST"
+            ingredient-1: "0.5,kg,Rice"
+            ingredient-2: "1,,Avocado"
+            ingredient-3: ",,salt"
+            ingredient-4: ""
+            ingredient-5: ""
+            ingredient-6: ""
+            publisher: "TEST"
+            servings: "23"
+            sourceUrl: "TEST"
+            title: "TEST"
+            [[Prototype]]: Object
+        */
 
-    // Upload the new recipe data
-    model.uploadRecipe(newRecipe);
-}
+        // Upload the new recipe data
+        await model.uploadRecipe(newRecipe);
+    } catch (err) {
+        console.error(err);
+        addRecipeView.renderError(err.message);
+    }
+};
 
 const init = function() {
     bookmarksView.addHandlerRender(controlBookmarks);
