@@ -139,10 +139,12 @@ const controlAddRecipe = async function (newRecipe) {
         console.log(model.state.recipe);
         /*
         {id: '65f6f50499c65700147c3be4', title: 'TEST16', publisher: 'TEST16', sourceUrl: 'TEST16', image: 'TEST16', ...}
+            bookmarked: true
             cookingTime: 36
             id: "65f6f50499c65700147c3be4"
             image: "TEST16"
             ingredients: (3) [{...}, {...}, {...}]
+            key: "e9d990e3-79fd-4c04-a913-1f98e98aac20"
             publisher: "TEST16"
             servings: 36
             sourceUrl: "TEST16"

@@ -23,7 +23,9 @@ const createRecipeObject = function (data) {
         image: recipe.image_url,
         servings: recipe.servings,
         cookingTime: recipe.cooking_time,
-        ingredients: recipe.ingredients
+        ingredients: recipe.ingredients,
+        ...(recipe.key && { key: recipe.key })
+        // `undefined` or `key: recipe.key`
     }
 }
 
@@ -186,6 +188,7 @@ export const uploadRecipe = async function (newRecipe) {
             [[Prototype]]: Object
         */
         state.recipe = createRecipeObject(data);
+        addBookmark(state.recipe);
     } catch (err) {
         throw err;
     }
