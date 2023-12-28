@@ -13,21 +13,24 @@ export const state = {
     bookmarks: []
 };
 
+const createRecipeObject = function (data) {
+    const { recipe } = data.data;
+    return {
+        id: recipe.id,
+        title: recipe.title,
+        publisher: recipe.publisher,
+        sourceUrl: recipe.source_url,
+        image: recipe.image_url,
+        servings: recipe.servings,
+        cookingTime: recipe.cooking_time,
+        ingredients: recipe.ingredients
+    }
+}
+
 export const loadRecipe = async function (id) {
     try {
         const data = await getJSON(`${API_URL}/${id}`);
-
-        const { recipe } = data.data;
-        state.recipe = {
-            id: recipe.id,
-            title: recipe.title,
-            publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
-            image: recipe.image_url,
-            servings: recipe.servings,
-            cookingTime: recipe.cooking_time,
-            ingredients: recipe.ingredients
-        }
+        state.recipe = createRecipeObject(data);
 
         if (state.bookmarks.some(bookmark => bookmark.id === id)) state.recipe.bookmarked = true;
         else state.recipe.bookmarked = false;
@@ -163,14 +166,14 @@ export const uploadRecipe = async function (newRecipe) {
 
         // console.log(recipe);
         /*
-        {title: 'TEST', source_url: 'TEST', image_url: 'TEST', publisher: 'TEST', cooking_time: 23, ...}
-            cooking_time: 23
-            image_url: "TEST"
+        {title: 'TEST16', source_url: 'TEST16', image_url: 'TEST16', publisher: 'TEST16', cooking_time: 36, ...}
+            cooking_time: 36
+            image_url: "TEST16"
             ingredients: (3) [{...}, {...}, {...}]
-            publisher: "TEST"
-            servings: 23
-            source_url: "TEST"
-            title: "TEST"
+            publisher: "TEST16"
+            servings: 36
+            source_url: "TEST16"
+            title: "TEST16"
             [[Prototype]]: Object
         */
 
@@ -182,6 +185,7 @@ export const uploadRecipe = async function (newRecipe) {
             status: "success"
             [[Prototype]]: Object
         */
+        state.recipe = createRecipeObject(data);
     } catch (err) {
         throw err;
     }

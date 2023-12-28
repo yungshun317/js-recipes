@@ -103,12 +103,12 @@ const controlAddRecipe = async function (newRecipe) {
         /*
         // Before `Object.fromEntries()`
         (12) [Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2), Array(2)]
-            0: (2) ['title', 'TEST']
-            1: (2) ['sourceUrl', 'TEST']
-            2: (2) ['image', 'TEST']
-            3: (2) ['publisher', 'TEST']
-            4: (2) ['cookingTime', '23']
-            5: (2) ['servings', '23']
+            0: (2) ['title', 'TEST16']
+            1: (2) ['sourceUrl', 'TEST16']
+            2: (2) ['image', 'TEST16']
+            3: (2) ['publisher', 'TEST16']
+            4: (2) ['cookingTime', '36']
+            5: (2) ['servings', '36']
             6: (2) ['ingredient-1', '0.5,kg,Rice']
             7: (2) ['ingredient-2', '1,,Avocado']
             8: (2) ['ingredient-3', ',,salt']
@@ -118,24 +118,37 @@ const controlAddRecipe = async function (newRecipe) {
             length: 12
             [[Prototype]]: Array(0)
         // After `Object.fromEntries()`
-        {title: 'TEST', sourceUrl: 'TEST', image: 'TEST', publisher: 'TEST', cookingTime: '23', ...}
-            cookingTime: "23"
-            image: "TEST"
+        {title: 'TEST16', sourceUrl: 'TEST16', image: 'TEST16', publisher: 'TEST16', cookingTime: '36', ...}
+            cookingTime: "36"
+            image: "TEST16"
             ingredient-1: "0.5,kg,Rice"
             ingredient-2: "1,,Avocado"
             ingredient-3: ",,salt"
             ingredient-4: ""
             ingredient-5: ""
             ingredient-6: ""
-            publisher: "TEST"
-            servings: "23"
-            sourceUrl: "TEST"
-            title: "TEST"
+            publisher: "TEST16"
+            servings: "36"
+            sourceUrl: "TEST16"
+            title: "TEST16"
             [[Prototype]]: Object
         */
 
         // Upload the new recipe data
         await model.uploadRecipe(newRecipe);
+        console.log(model.state.recipe);
+        /*
+        {id: '65f6f50499c65700147c3be4', title: 'TEST16', publisher: 'TEST16', sourceUrl: 'TEST16', image: 'TEST16', ...}
+            cookingTime: 36
+            id: "65f6f50499c65700147c3be4"
+            image: "TEST16"
+            ingredients: (3) [{...}, {...}, {...}]
+            publisher: "TEST16"
+            servings: 36
+            sourceUrl: "TEST16"
+            title: "TEST16"
+            [[Prototype]]: Object
+        */
     } catch (err) {
         console.error(err);
         addRecipeView.renderError(err.message);
